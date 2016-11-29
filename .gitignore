@@ -33,6 +33,7 @@
 *.doc
 *.docx
 *.pdf
+*.txt
 
 # Tex Files
 *.tex
@@ -46,3 +47,9 @@
 *.rar
 *.tar.gz
 *.7z
+
+# Image File
+*.png
+*.jpg
+*.jpeg
+*.eps

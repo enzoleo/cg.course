@@ -5,6 +5,11 @@
 ///
 /// File: main.cpp
 /// This C++ source file aims to solve the problem 4.
+///
+/// ATTENTION:
+/// The two files are needed in this poject:
+/// 	stanford_bunny.cpp	stanford_bunny.h
+/// Make sure you have these files. You can find them on the Internet.
 /// ////////////////////////////////////////////////////////////////////  
 
 #include <stdlib.h>

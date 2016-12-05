@@ -1,3 +1,4 @@
+# ! /bin/sh
 #
 # File `install.sh`
 # 	1. Intends to create new `build` folder.
@@ -13,10 +14,21 @@
 # in Windows, this shell script may not be supported and you have to install CMake
 # GUI for Windows, or you can compile sources one by one.
 #
+#####
 
 # Create `build` folder and generate Makefiles
+# Get the path of this `install.sh` file
+ShellPath=$(cd "$(dirname "$0")"; pwd)
+cd $ShellPath
+
+# Create directory `build`
+# This folder saves all files after CMake compilation
 mkdir build
 cd build
+
+# CMake compilation -> generate Makefile
 cmake ..
+
+# Make the whole project
+# generate the executables
 make
-	

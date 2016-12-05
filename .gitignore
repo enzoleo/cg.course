@@ -33,7 +33,6 @@
 *.doc
 *.docx
 *.pdf
-*.txt
 
 # Tex Files
 *.tex

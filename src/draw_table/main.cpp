@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 	glutInitWindowSize(400, 240);
-	int windowHandle = glutCreateWindow("Simple GLUT App");
+	glutCreateWindow("Simple GLUT App");
 
 	glutDisplayFunc(redraw);
 	glutReshapeFunc(reshape);

@@ -14,6 +14,7 @@ option(EXECUTE_MYEXS_01 "Construct experiment01 - Hexagram" ON)
 option(EXECUTE_MYEXS_02 "Construct experiment02 - DrawTable" ON)
 option(EXECUTE_MYEXS_03 "Construct experiment03 - GLViewer" ON)
 option(EXECUTE_MYEXS_04 "Construct experiment04 - GLLists" ON)
+option(EXECUTE_MYEXS_05 "Construct experiment05 - GLLights" ON)
 
 # Find OpenGL and GLUT packages
 find_package(OpenGL REQUIRED)
@@ -64,6 +65,16 @@ if(EXECUTE_MYEXS_04)
 	add_executable(GLListsDemo ${DIR_SRCS_GLLISTS})
 	target_link_libraries(GLListsDemo ${EXTRA_LIBS_01} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 endif(EXECUTE_MYEXS_04)
+
+# Whether to construct experiment05
+if(EXECUTE_MYEXS_05)
+	include_directories("${PROJECT_SOURCE_DIR}/src/gl_lights")
+	add_subdirectory(gl_lights)
+	set(GLLightsLib ${GLLightsLib} GLViewer)
+	aux_source_directory(./gl_lights/ DIR_SRCS_GLLIGHTS)
+	add_executable(GLLightsDemo ${DIR_SRCS_GLLIGHTS})
+	target_link_libraries(GLLightsDemo ${EXTRA_LIBS_01} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+endif(EXECUTE_MYEXS_05)
 
 # GDB Debug supported
 set(CMAKE_BUILD_TYPE "Debug")

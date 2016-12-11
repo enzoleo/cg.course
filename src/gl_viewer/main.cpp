@@ -69,8 +69,6 @@ void updateView(int width, int height)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	float whRatio = (GLfloat)width / (GLfloat)height;
-
 	if (bPersp) gluPerspective(60, 1, 1, 100);
 	else glOrtho(-2, 2, -2, 2, -100, 100);
 	
@@ -158,7 +156,7 @@ int main(int argc, char *argv[])
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
     glutInitWindowSize(480, 480);
-    int windowHandle = glutCreateWindow("Simple GLUT App");
+    glutCreateWindow("Simple GLUT App");
 
     glutDisplayFunc(redraw);
     glutReshapeFunc(reshape);

@@ -18,17 +18,26 @@
 
 # Create `build` folder and generate Makefiles
 # Get the path of this `install.sh` file
-ShellPath=$(cd "$(dirname "$0")"; pwd)
-cd $ShellPath
+shellPath=$(cd "$(dirname "$0")"; pwd)
+cd $shellPath
 
 # Create directory `build`
 # This folder saves all files after CMake compilation
-mkdir build
+echo "$shellPath/build"
+if [ ! -d "$shellPath/build" ]; then
+	echo "GENERATE: Create directory 'BUILD'."
+	mkdir build
+else
+	echo "GENERATE: The directory 'BUILD' already exists!"
+fi
 cd build
 
 # CMake compilation -> generate Makefile
+echo "GENERATE: CMake process..."
 cmake ..
 
 # Make the whole project
 # generate the executables
+echo "GENERATE: Make project..."
 make
+echo "GENERATE: Generate done."

@@ -6,7 +6,7 @@
 
 # CMake Minimum Version Required
 cmake_minimum_required(VERSION 2.8)
-project(ZJUCG_exs_demo)
+project(CG_exs_demo)
 
 ###
 # The source files are packed in `src` folder
@@ -14,5 +14,3 @@ project(ZJUCG_exs_demo)
 # The `CMakeLists.txt` in `src` define the dependencies of projects
 #
 add_subdirectory(src)
-
-

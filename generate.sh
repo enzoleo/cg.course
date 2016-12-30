@@ -41,3 +41,19 @@ cmake ..
 echo "GENERATE: Make project..."
 make
 echo "GENERATE: Generate done."
+
+# Create new directory `bin`
+# The directory `bin` includes all executables
+# The directory `texture` includes all texture images
+mkdir bin
+mkdir ./src/texture
+
+cp -avx ../src/gl_texture/texture/* ./src/texture/
+
+for file in ./src/*
+do
+	if test -f $file && test -x $file
+	then
+		mv $file ./bin/
+	fi
+done

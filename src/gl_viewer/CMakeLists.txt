@@ -19,6 +19,6 @@ include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
 
 # Could not find the OpenGL and GLUT packages
 if (NOT OpenGL_FOUND OR NOT GLUT_FOUND)
-	message(FATAL_ERROR "Package OpenGL or GLUT not found!")
+    message(FATAL_ERROR "Package OpenGL or GLUT not found!")
 endif(NOT OpenGL_FOUND OR NOT GLUT_FOUND)
 

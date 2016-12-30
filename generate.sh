@@ -48,8 +48,11 @@ echo "GENERATE: Generate done."
 mkdir bin
 mkdir ./src/texture
 
+# Copy all texture images to `build` directory
 cp -avx ../src/gl_texture/texture/* ./src/texture/
 
+# Do traversal in `./build/src` directory
+# Move all executables to the `bin` directory
 for file in ./src/*
 do
 	if test -f $file && test -x $file

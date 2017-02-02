@@ -1,0 +1,63 @@
+# -----------------------------------------------------------------------------
+# SnowballRun: Simple OpenGL game
+# TRAVIS CI file. (This project is tested on LINUX platform)
+# Distributed under the GPL-3.0 License.
+# See file `LICENSE` for more details.
+#------------------------------------------------------------------------------
+language: cpp
+sudo: required
+dist: trusty
+branches:
+    only:
+        - master
+compiler:
+    - g++
+os:
+    # Only test CI in linux
+    - linux
+before_install:
+    # Notice that the GLFW requires a working X11 display and makefont uses GLFW.
+    - "export DISPLAY=:99.0"
+    - "sh -e /etc/init.d/xvfb start"
+install:
+    # Update system here
+    - sudo apt-get update -qq
+    # Install dependencies libraries (cmake, g++ compiler, glew, X11 and boost libraries)
+    # Notice that BOOST library is needed for ASSIMP
+    - sudo apt-get install build-essential g++-4.8 gcc-4.8 libgl1-mesa-dev libglu1-mesa-dev libfreeglut3-dev
+    # Prepare manual installation of dependencies
+    # Download and build other required dependencies here (just temporary)
+    - mkdir travis_tmp/ && cd travis_tmp
+    # SDL2 (Version 2.0.5) install
+    # Download source files from official site
+    - wget -O SDL2-2.0.5.zip https://www.libsdl.org/release/SDL2-2.0.5.zip
+    - unzip SDL2-2.0.5.zip
+    - cd SDL2-2.0.5
+    - ./configure
+    - make && sudo make install
+    - cd ..
+    # SDL2_image (Version 2.0.1) install
+    # Download source files from official site
+    - wget -O SDL2_image-2.0.1.zip https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.1.zip
+    - unzip SDL2_image-2.0.1.zip
+    - cd SDL2_image-2.0.1
+    - ./configure
+    - make && sudo make install
+    - cd ..
+addons:
+    apt:
+        sources:
+            - kubuntu-backports
+        packages:
+            - cmake
+script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+notifications:
+    email:
+        recipients:
+            - enzoliao95@gmail.com
+    on_success: never
+    on_failure: always

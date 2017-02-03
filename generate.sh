@@ -29,6 +29,8 @@ if [ ! -d "$shellPath/build" ]; then
 	mkdir build
 else
 	echo "GENERATE: The directory 'BUILD' already exists!"
+	rm -rf build
+	mkdir build
 fi
 cd build
 

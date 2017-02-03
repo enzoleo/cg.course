@@ -1,6 +1,6 @@
 /* SDL library needed! Make sure you have installed it! */
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 /* OpenGL library needed! Make sure you have installed it! */
 #include <GL/glut.h>

@@ -6,7 +6,7 @@
 #
 # CMake Information
 # 	CMake Test Version: VERSION 3.7
-#	CMake Minimum Version: VERSION 2.8
+#	CMake Minimum Version: VERSION 3.0
 #
 # Make sure you have installed enabled CMake, or you will have to construct the
 # whole project by youself. I recommend that Linux environment is the first choice
@@ -44,21 +44,3 @@ echo "GENERATE: Make project..."
 make
 echo "GENERATE: Generate done."
 
-# Create new directory `bin`
-# The directory `bin` includes all executables
-# The directory `texture` includes all texture images
-mkdir bin
-mkdir ./src/texture
-
-# Copy all texture images to `build` directory
-cp -avx ../src/gl_texture/texture/* ./src/texture/
-
-# Do traversal in `./build/src` directory
-# Move all executables to the `bin` directory
-for file in ./src/*
-do
-	if test -f $file && test -x $file
-	then
-		mv $file ./bin/
-	fi
-done

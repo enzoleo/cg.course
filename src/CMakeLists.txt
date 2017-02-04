@@ -13,6 +13,10 @@ set(CMAKE_CXX_FLAGS "-std=c++0x")
 # CMake will search Find___.cmake files in this path
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
+# Set cmake executable output path
+# All executables will be generated in this path
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+
 # GDB Debug supported
 set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")

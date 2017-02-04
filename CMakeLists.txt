@@ -2,6 +2,7 @@
 # CMakeList
 # Author: EnzoLiao95
 # CMake Test Version: VERSION 3.7
+# CMake Minimum Version: VERSION 3.0
 # --------------------------------------------------------------------------------------
 
 # CMake Minimum Version Required

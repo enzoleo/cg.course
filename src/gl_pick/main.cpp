@@ -50,6 +50,56 @@ GLfloat bunny_position[18][3] =
     { -1.0f,  0.0f, 7.5f }, {  0.0f,  0.0f, 7.5f }, {  1.0f,  0.0f, 7.5f }
 };
 
+/* Draw scene with vertex array */
+void drawVA()
+{
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, vertices);
+    glNormalPointer(GL_FLOAT, 0, normals);
+    glDrawElements(GL_TRIANGLES, 16301 * 3, GL_UNSIGNED_SHORT, face_indices);
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
+}
+
+/* Draw scene naively */
+void drawNaive()
+{
+    glBegin(GL_TRIANGLES);
+    for (GLuint i = 0; i < (sizeof(face_indices) / sizeof(face_indices[0])); i++)
+    {
+        for (GLuint j = 0; j < 3; j++)
+        {
+            int idx = face_indices[i][j];
+            glNormal3fv(&normals[idx][0]);
+            glVertex3fv(&vertices[idx][0]);
+        }
+    }
+    glEnd();
+}
+
+/* Generate GL-list */
+GLint Gen3DObjectList()
+{
+    GLint list = glGenLists(1);
+    glNewList(list, GL_COMPILE);
+
+    glBegin(GL_TRIANGLES);
+    for (GLuint i = 0; i < (sizeof(face_indices) / sizeof(face_indices[0])); i++)
+    {
+        for (GLuint j = 0; j < 3; j++)
+        {
+            int idx = face_indices[i][j];
+            glNormal3fv(&normals[idx][0]);
+            glVertex3fv(&vertices[idx][0]);
+        }
+    }
+    glEnd();
+
+    glEndList();
+    return list;
+}
+
 /* Initialize color array */
 void initColor()
 {
@@ -366,7 +416,7 @@ int main(int argc, char *argv[])
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
     glutInitWindowSize(480, 480);
-    glutCreateWindow("gl_pick");
+    glutCreateWindow("Experiment07");
     
     initColor();
     glutMouseFunc(pick);
